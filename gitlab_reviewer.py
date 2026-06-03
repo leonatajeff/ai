@@ -1,5 +1,7 @@
 """Multi-provider GitLab Merge Request Reviewer.
 
+(c) 2026 - MIT License
+
 Fetches the diff for a GitLab MR, sends it to an LLM (via litellm) for review,
 and posts findings as line-scoped discussions (plus a brief summary comment)
 on the MR.
@@ -15,7 +17,7 @@ Usage (local):
     export CI_PROJECT_ID=12345
     export CI_MERGE_REQUEST_IID=1
     export GITLAB_TOKEN=glpat-xxxxx
-    export LLM_MODEL_ID=openai/gpt-4o
+    export LLM_MODEL_ID=openai/gpt-5.5-thinking
     export LLM_API_KEY=sk-xxxx  # Generic key, or use provider-specific ones
     export MAX_CONCURRENCY=5    # Number of files to process simultaneously
     python scripts/gitlab_reviewer.py
@@ -60,7 +62,7 @@ logger = logging.getLogger(__name__)
 # Constants
 # --------------------------------------------------------------------------
 
-DEFAULT_MODEL_ID = "openai/gpt-4o"
+DEFAULT_MODEL_ID = "openai/gpt-5.5-thinking"
 DEFAULT_MAX_FILE_TOKENS = 15_000
 DEFAULT_LLM_TIMEOUT = 60
 DEFAULT_MAX_CONCURRENCY = 5
